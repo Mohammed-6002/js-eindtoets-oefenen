@@ -9,27 +9,27 @@ console.log("--- Page 3 ---");
 //Add a tweet
 //ROC Mondriaan tweets
 
-document.addEventListener('DOMContentLoaded', function() {
-    const tweetButton = document.querySelector('#tweetButton'); // Veronderstel dat je button een id heeft
-    const tweetsContainer = document.querySelector('#tweetsContainer'); // Container voor tweets
-
-    tweetButton.addEventListener('click', function() {
-        const tweetMessage = prompt("Wat wil je tweeten?");
-        if (tweetMessage) {
-            tweetsContainer.innerHTML += createTweet(tweetMessage);
-        }
-    });
-
-    function createTweet(message) {
-        return `
-            <div class="tweet">
-                <div class="avatar">
-                    <img src="../images/female-avatar.svg" alt="avatar" srcset="" width="40" height="40">
-                </div>
-                <div class="message-box">
-                    <div class="message-content">${message}</div>
-                </div>
+// Functie om een tweet te creëren
+function createTweet(message) {
+    return `
+        <div class="tweet">
+            <div class="avatar">
+                <img src="../images/female-avatar.svg" alt="avatar" width="40" height="40">
             </div>
-        `;
+            <div class="message-box">
+                <div class="message-content">${message}</div>
+            </div>
+        </div>
+    `;
+}
+
+// Selecteer de knop en voeg een event listener toe
+const tweetButton = document.querySelector('.bnt-tweet');
+tweetButton.addEventListener('click', () => {
+    const userInput = prompt("Typ je tweet bericht:");
+    if (userInput) {
+        const tweetHTML = createTweet(userInput); // Roep de createTweet functie aan met de gebruikersinvoer
+        const twitterContainer = document.querySelector('.twitter-container');
+        twitterContainer.insertAdjacentHTML('beforeend', tweetHTML); // Voeg de tweet toe aan de container
     }
 });

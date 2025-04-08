@@ -9,21 +9,22 @@ console.log("--- Page 2 ---");
 // 2. Tweede item
 // 3. Derde item
 
-document.addEventListener('DOMContentLoaded', function() {
-  const addButton = document.querySelector('#addButton'); // Veronderstel dat je button een id heeft
-  const clearButton = document.querySelector('#clearButton'); // Veronderstel dat je button een id heeft
-  const messageList = document.querySelector('#messageList'); // UL element
+// Selecteer de knoppen en de ul
+const addButton = document.querySelector('.btn-add');
+const clearButton = document.querySelector('.btn-clear');
+const messageList = document.querySelector('.ul-list');
 
-  addButton.addEventListener('click', function() {
-      const message = prompt("Voer een bericht in:");
-      if (message) {
-          const listItem = document.createElement('li');
-          listItem.textContent = message;
-          messageList.appendChild(listItem);
-      }
-  });
+// Voeg een event listener toe aan de addButton
+addButton.addEventListener('click', function() {
+    const userInput = prompt("Voer een bericht in:");
+    if (userInput) {
+        const newItem = document.createElement('li');
+        newItem.textContent = userInput;
+        messageList.appendChild(newItem);
+    }
+});
 
-  clearButton.addEventListener('click', function() {
-      messageList.innerHTML = ''; // Leeg de lijst
-  });
+// Voeg een event listener toe aan de clearButton
+clearButton.addEventListener('click', function() {
+    messageList.innerHTML = ''; // Verwijder alle li-items
 });
